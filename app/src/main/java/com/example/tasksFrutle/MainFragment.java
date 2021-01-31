@@ -12,8 +12,17 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.tasksFrutle.Model.Task;
+import com.example.tasksFrutle.Model.TaskFragment;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.List;
 
 public class MainFragment extends Fragment {
 
@@ -22,6 +31,7 @@ public class MainFragment extends Fragment {
     }
 
     private RecyclerView mRecyclerView;
+    private FloatingActionButton mActionButton;
     private Toolbar mToolbar;
 
     @Nullable
@@ -40,11 +50,26 @@ public class MainFragment extends Fragment {
 //        AppCompatActivity activity = (AppCompatActivity) getActivity();
 //        activity.setActionBar(mToolbar);
 
-
         mRecyclerView = view.findViewById(R.id.RecyclerList);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(),
                 RecyclerView.VERTICAL,false);
         mRecyclerView.setLayoutManager(layoutManager);
+
+        Adapter adapter = new Adapter();
+        mRecyclerView.setAdapter(adapter);
+
+        mActionButton = view.findViewById(R.id.fab);
+        mActionButton.setOnClickListener(v -> {
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.activity, TaskFragment.newInstance())
+                    .commit();
+        });
+
+        MainViewModel mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
+        mainViewModel.getTaskLiveData().observe(getViewLifecycleOwner(),
+                tasks -> {
+            adapter.setItems(tasks);
+        });
     }
 
 }

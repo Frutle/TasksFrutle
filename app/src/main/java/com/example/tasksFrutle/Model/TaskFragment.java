@@ -41,15 +41,15 @@ public class TaskFragment extends Fragment {
 
         mText = view.findViewById(R.id.task_text);
 
-        mToolbar = view.findViewById(R.id.toolbar2);
-        AppCompatActivity activity = (AppCompatActivity) getActivity();
-        activity.setActionBar(mToolbar);
-        ActionBar actionBar = activity.getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setHomeButtonEnabled(true);
-        if(actionBar != null){
-            actionBar.setTitle(R.string.details);
-        }
+//        mToolbar = view.findViewById(R.id.toolbar2);
+//        AppCompatActivity activity = (AppCompatActivity) getActivity();
+//        activity.setActionBar(mToolbar);
+//        ActionBar actionBar = activity.getSupportActionBar();
+//        actionBar.setDisplayHomeAsUpEnabled(true);
+//        actionBar.setHomeButtonEnabled(true);
+//        if(actionBar != null){
+//            actionBar.setTitle(R.string.details);
+//        }
 
 
     }
