@@ -5,12 +5,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -32,12 +32,18 @@ public class MainFragment extends Fragment {
 
     private RecyclerView mRecyclerView;
     private FloatingActionButton mActionButton;
+    private Adapter mAdapter;
     private Toolbar mToolbar;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.main_fragment,container,false);
+
+        mToolbar = view.findViewById(R.id.toolbar);
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.setSupportActionBar(mToolbar);
+
         return view;
     }
 
@@ -46,17 +52,13 @@ public class MainFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-//        mToolbar = view.findViewById(R.id.toolbar);
-//        AppCompatActivity activity = (AppCompatActivity) getActivity();
-//        activity.setActionBar(mToolbar);
-
         mRecyclerView = view.findViewById(R.id.RecyclerList);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(),
                 RecyclerView.VERTICAL,false);
         mRecyclerView.setLayoutManager(layoutManager);
 
-        Adapter adapter = new Adapter();
-        mRecyclerView.setAdapter(adapter);
+        mAdapter = new Adapter();
+        mRecyclerView.setAdapter(mAdapter);
 
         mActionButton = view.findViewById(R.id.fab);
         mActionButton.setOnClickListener(v -> {
@@ -68,7 +70,7 @@ public class MainFragment extends Fragment {
         MainViewModel mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
         mainViewModel.getTaskLiveData().observe(getViewLifecycleOwner(),
                 tasks -> {
-            adapter.setItems(tasks);
+            mAdapter.setItems(tasks);
         });
     }
 

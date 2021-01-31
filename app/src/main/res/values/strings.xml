@@ -12,4 +12,5 @@
     <string name="task">Введите заметку</string>
     <string name="details">Заметка</string>
     <string name="complete">Завершено</string>
+    <string name="save">сохранить</string>
 </resources>
