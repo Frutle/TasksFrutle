@@ -19,6 +19,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.example.tasksFrutle.App;
+import com.example.tasksFrutle.Data.AppDatabase;
+import com.example.tasksFrutle.Data.DataTask;
 import com.example.tasksFrutle.MainFragment;
 import com.example.tasksFrutle.R;
 
@@ -51,6 +53,8 @@ public class TaskFragment extends Fragment {
 
         mEditText = view.findViewById(R.id.task_text);
 
+        mTask = new Task();
+
         return view;
     }
 
@@ -58,7 +62,6 @@ public class TaskFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-       // mEditText.setText(mTask.mText);
     }
 
     @Override
@@ -76,13 +79,13 @@ public class TaskFragment extends Fragment {
                         .commit();
                 break;
             case R.id.it_save:
-//                if(mEditText.getText().length() > 0){
-//                    mTask.mText = mEditText.getText().toString();
-//                    mTask.mDone = false;
-//                    mTask.mTime = (int) System.currentTimeMillis();
-//                }
-               // App.getInstance().getDataTask().update(mTask);
-                mEditText.setText("аррррр");
+                if(mEditText.getText().length() > 0){
+                    mTask.mText = mEditText.getText().toString();
+                    mTask.mDone = false;
+                    mTask.mTime = (int) System.currentTimeMillis();
+               }
+                App.getInstance().getDataTask().insert(mTask);
+
                 getFragmentManager().beginTransaction()
                         .replace(R.id.activity, MainFragment.newInstance())
                         .commit();
@@ -90,4 +93,5 @@ public class TaskFragment extends Fragment {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

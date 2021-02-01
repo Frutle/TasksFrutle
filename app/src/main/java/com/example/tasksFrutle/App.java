@@ -26,6 +26,7 @@ public class App extends Application {
 
         mDatabase = Room.databaseBuilder(getApplicationContext(),
                 AppDatabase.class,"data")
+                .allowMainThreadQueries()
                 .build();
 
         mDataTask = mDatabase.taskDao();
