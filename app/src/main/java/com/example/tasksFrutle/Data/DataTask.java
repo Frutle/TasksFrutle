@@ -37,4 +37,5 @@ public interface DataTask {
 
     @Delete
     void delete(Task task);
+
 }

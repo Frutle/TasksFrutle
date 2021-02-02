@@ -1,5 +1,6 @@
 package com.example.tasksFrutle.Model;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,8 +20,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.example.tasksFrutle.App;
-import com.example.tasksFrutle.Data.AppDatabase;
-import com.example.tasksFrutle.Data.DataTask;
 import com.example.tasksFrutle.MainFragment;
 import com.example.tasksFrutle.R;
 
@@ -54,7 +53,11 @@ public class TaskFragment extends Fragment {
         mEditText = view.findViewById(R.id.task_text);
 
         mTask = new Task();
-
+        //получаем текст из view holder ,если он был
+        Bundle bundle = this.getArguments();
+        if(bundle != null) {
+            mEditText.setText(bundle.get("text").toString());
+        }
         return view;
     }
 
@@ -79,19 +82,21 @@ public class TaskFragment extends Fragment {
                         .commit();
                 break;
             case R.id.it_save:
-                if(mEditText.getText().length() > 0){
+                if(mEditText.getText().length() > 0) {
                     mTask.mText = mEditText.getText().toString();
                     mTask.mDone = false;
                     mTask.mTime = (int) System.currentTimeMillis();
-               }
-                App.getInstance().getDataTask().insert(mTask);
-
-                getFragmentManager().beginTransaction()
-                        .replace(R.id.activity, MainFragment.newInstance())
-                        .commit();
+                    if (App.getInstance().getDatabase().inTransaction()) {
+                        App.getInstance().getDataTask().update(mTask);
+                    } else {
+                        App.getInstance().getDataTask().insert(mTask);
+                    }
+                    getFragmentManager().beginTransaction()
+                            .replace(R.id.activity, MainFragment.newInstance())
+                            .commit();
+                }
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
-
 }

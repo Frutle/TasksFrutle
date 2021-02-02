@@ -6,6 +6,7 @@ import androidx.room.Room;
 
 import com.example.tasksFrutle.Data.AppDatabase;
 import com.example.tasksFrutle.Data.DataTask;
+import com.example.tasksFrutle.Model.Task;
 
 public class App extends Application {
 
@@ -47,5 +48,6 @@ public class App extends Application {
     public void setDataTask(DataTask dataTask) {
         mDataTask = dataTask;
     }
+
 }
 
