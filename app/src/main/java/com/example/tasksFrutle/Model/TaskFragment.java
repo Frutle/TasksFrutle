@@ -1,6 +1,5 @@
 package com.example.tasksFrutle.Model;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,7 +19,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.example.tasksFrutle.App;
-import com.example.tasksFrutle.MainFragment;
+import com.example.tasksFrutle.View.MainFragment;
 import com.example.tasksFrutle.R;
 
 public class TaskFragment extends Fragment {

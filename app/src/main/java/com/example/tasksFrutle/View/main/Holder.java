@@ -1,4 +1,4 @@
-package com.example.tasksFrutle;
+package com.example.tasksFrutle.View.main;
 
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -12,8 +12,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tasksFrutle.App;
 import com.example.tasksFrutle.Model.Task;
 import com.example.tasksFrutle.Model.TaskFragment;
+import com.example.tasksFrutle.R;
 
 
 public class Holder extends RecyclerView.ViewHolder {

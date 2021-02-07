@@ -1,8 +1,9 @@
-package com.example.tasksFrutle;
+package com.example.tasksFrutle.View.main;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.tasksFrutle.App;
 import com.example.tasksFrutle.Model.Task;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.tasksFrutle;
+package com.example.tasksFrutle.View.main;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SortedList;
 
 import com.example.tasksFrutle.Model.Task;
+import com.example.tasksFrutle.R;
+import com.example.tasksFrutle.View.main.Holder;
 
 import java.util.List;
 

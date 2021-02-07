@@ -1,4 +1,4 @@
-package com.example.tasksFrutle;
+package com.example.tasksFrutle.View;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -12,18 +12,16 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.tasksFrutle.Model.Task;
+import com.example.tasksFrutle.View.main.Adapter;
+import com.example.tasksFrutle.View.main.MainViewModel;
 import com.example.tasksFrutle.Model.TaskFragment;
+import com.example.tasksFrutle.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.util.List;
 
 public class MainFragment extends Fragment {
 

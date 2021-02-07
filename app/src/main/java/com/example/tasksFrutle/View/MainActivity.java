@@ -1,21 +1,10 @@
-package com.example.tasksFrutle;
+package com.example.tasksFrutle.View;
 
 import android.os.Bundle;
 
-import com.example.tasksFrutle.Model.TaskFragment;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import com.example.tasksFrutle.R;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.View;
-
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View.OnClickListener;
 
 public class MainActivity extends AppCompatActivity {
 
